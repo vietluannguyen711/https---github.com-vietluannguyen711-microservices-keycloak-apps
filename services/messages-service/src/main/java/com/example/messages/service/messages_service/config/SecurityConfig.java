@@ -16,6 +16,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(auth -> auth
                 .requestMatchers(HttpMethod.GET, "/api/messages/**").permitAll()
+                .requestMatchers(HttpMethod.POST, "/api/messages/archive").hasAnyRole("ADMIN")
                 .anyRequest().authenticated()
         )
                 .sessionManagement(ses -> ses.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
