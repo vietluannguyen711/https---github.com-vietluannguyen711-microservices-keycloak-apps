@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: message-app
+  profiles:
+    active: local
+
+
+# local env
+  config.activate.on-profile: local
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            client-id: ${KEYCLOAK_APP_ID:messages-webapp}
+            client-secret: ${KEYCLOAK_APP_SECRET:JWD0zYaGEP7koQ5nxlalpZfMkqMNVHNq}
+            scope: openid, profile
+            redirect-uri: "{baseUrl}/login/oauth2/code/keycloak"
+        provider:
+          keycloak: 
+            issuer-uri: http://localhost:9191/realms/luan-apps
