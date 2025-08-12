@@ -9,6 +9,16 @@
             "projectName": "message-app",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-MessagesServiceApplication<messages-service>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.example.messages.service.messages_service.MessagesServiceApplication",
+            "projectName": "messages-service",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }

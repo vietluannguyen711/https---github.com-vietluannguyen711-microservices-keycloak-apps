@@ -1,11 +1,12 @@
+server:
+  port: 8080
 spring:
   application:
     name: message-app
   profiles:
     active: local
 
-
-# local env
+  # local env
   config.activate.on-profile: local
   security:
     oauth2:
@@ -17,5 +18,5 @@ spring:
             scope: openid, profile
             redirect-uri: "{baseUrl}/login/oauth2/code/keycloak"
         provider:
-          keycloak: 
+          keycloak:
             issuer-uri: http://localhost:9191/realms/luan-apps
