@@ -16,8 +16,10 @@ import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.security.oauth2.server.resource.authentication.JwtGrantedAuthoritiesConverter;
 
+import lombok.extern.slf4j.Slf4j;
 
 
+@Slf4j
 class KeycloakJwtAuthenticationConverter implements Converter<Jwt, AbstractAuthenticationToken> {
 
     private final Converter<Jwt, Collection<GrantedAuthority>> delegate = new JwtGrantedAuthoritiesConverter();
@@ -28,6 +30,7 @@ class KeycloakJwtAuthenticationConverter implements Converter<Jwt, AbstractAuthe
 
     public AbstractAuthenticationToken convert(Jwt jwt) {
 
+        
         List<GrantedAuthority> authorityList = extractRoles(jwt);
 
         Collection<GrantedAuthority> authorities = delegate.convert(jwt);

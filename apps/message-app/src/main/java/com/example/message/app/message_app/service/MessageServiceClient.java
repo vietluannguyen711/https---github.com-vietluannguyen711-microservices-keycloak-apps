@@ -46,6 +46,7 @@ public class MessageServiceClient {
         try {
             String url = MESSAGE_SVC_BASE_URL + "/api/messages";
             HttpHeaders headers = new HttpHeaders();
+
             headers.add("Authorization", "Bearer " + securityHelper.getAccessToken());
             HttpEntity<?> httpEntity = new HttpEntity<>(message, headers);
             ResponseEntity<Message> response = restTemplate.exchange(
