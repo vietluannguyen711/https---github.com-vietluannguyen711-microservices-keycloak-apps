@@ -23,25 +23,17 @@ class MessageController {
     private final MessageRepository messageRepository;
 
     MessageController(MessageRepository messageRepository) {
-
         this.messageRepository = messageRepository;
-
     }
 
     @GetMapping
-
     List<Message> getMessages() {
-
         return messageRepository.getMessages();
-
     }
 
     @PostMapping
-
     Message createMessage(@RequestBody @Valid Message message) {
-
         return messageRepository.createMessage(message);
-
     }
 
     @PostMapping("/archive")

@@ -2,7 +2,6 @@ package com.example.message.app.message_app.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.CorsConfigurer;
 import org.springframework.security.config.annotation.web.configurers.CsrfConfigurer;
@@ -26,7 +25,9 @@ public class SecurityConfig {
                 .anyRequest().authenticated())
                 .cors(CorsConfigurer::disable)
                 .csrf(CsrfConfigurer::disable)
-                .oauth2Login(Customizer.withDefaults())
+                .oauth2Login((oauth2
+                        -> oauth2.userInfoEndpoint(userInfo -> userInfo
+                .userAuthoritiesMapper(new KeycloakAuthoritiesMapper()))))
                 .logout(logout -> logout
                 .clearAuthentication(true)
                 .invalidateHttpSession(true)
